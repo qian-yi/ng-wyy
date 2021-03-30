@@ -2,6 +2,10 @@
 
 # NgWyy
 
+```html
+angular8 + ngrx8 + ng-zorro + material/cdk
+```
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.0.
 
 ## 启动接口（[网易云音乐接口](NeteaseCloudMusicApi)）：

@@ -31,6 +31,11 @@ registerLocaleData(zh);
   providers: [{ provide: NZ_I18N, useValue: zh_CN }],
 })
 export class CoreModule {
+  /**
+   * @SkipSelf() 跳过自身，去父 module 查找
+   * @Optional() 当 CoreModule 没找到时，赋值为 null
+   * @param parentModule 注入自己
+   */
   constructor(@SkipSelf() @Optional() parentModule: CoreModule) {
     if (parentModule) {
       throw new Error('CoreModule 只能被appModule引入');
