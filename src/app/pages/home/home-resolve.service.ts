@@ -8,6 +8,7 @@ import { first } from 'rxjs/internal/operators';
 
 type HomeDataType = [Banner[], HotTag[], SongSheet[], Singer[]];
 
+// resolve 守卫
 @Injectable()
 export class HomeResolverService implements Resolve<HomeDataType> {
   constructor(
@@ -15,6 +16,7 @@ export class HomeResolverService implements Resolve<HomeDataType> {
     private singerServe: SingerService
   ) {}
   resolve(): Observable<HomeDataType> {
+    // forkJoin 相当于 Promise.all
     return forkJoin([
       this.homeServe.getBanners(),
       this.homeServe.getHotTags(),
