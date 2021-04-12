@@ -83,11 +83,12 @@ export class WySliderComponent implements OnInit, OnDestroy, ControlValueAccesso
       );
 
       source.end$ = fromEvent(this.doc, end);
+      // 不用原生document原因：不利于多端渲染
       source.moveResolved$ = fromEvent(this.doc, move).pipe(
         filter(filerFunc),
         tap(sliderEvent),
         pluck(...pluckKey),
-        distinctUntilChanged(),
+        distinctUntilChanged(), // 只有当值发生改变时，才发射流
         map((position: number) => this.findClosestValue(position)),
         takeUntil(source.end$)
       );
