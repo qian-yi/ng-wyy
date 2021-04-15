@@ -136,6 +136,7 @@ export class WySliderComponent implements OnInit, OnDestroy, ControlValueAccesso
   private onDragMove(value: number) {
     if (this.isDragging) {
       this.setValue(value);
+      // 手动触发变更检测
       this.cdr.markForCheck();
     }
   }
